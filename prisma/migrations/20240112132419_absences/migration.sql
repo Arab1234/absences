@@ -1,0 +1,23 @@
+-- CreateTable
+CREATE TABLE `Jourferie` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `libelle` VARCHAR(191) NOT NULL,
+    `dateJF` DATE NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Certificat` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `du` DATE NOT NULL,
+    `au` DATE NOT NULL,
+    `CIN` VARCHAR(191) NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Certificat` ADD CONSTRAINT `Certificat_CIN_fkey` FOREIGN KEY (`CIN`) REFERENCES `Etudiant`(`CIN`) ON DELETE CASCADE ON UPDATE CASCADE;
